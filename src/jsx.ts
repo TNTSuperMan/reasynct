@@ -22,6 +22,10 @@ const jsxDOM = <K extends keyof JSX.IntrinsicElements>
             .forEach(e=>{
                 if(e[0] != "length" && e[0] != "parentRule" && e[1])
                     Reflect.set(el.style, e[0], e[1])})
+    if(props.on){
+        ObjEntries<typeof props.on, ()=>void>(props.on)
+            .forEach(e=>el.addEventListener(...e))
+    }
     return el;
 }
 
