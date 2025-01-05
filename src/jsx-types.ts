@@ -22,6 +22,7 @@ interface AnchorElement extends BaseElement{
 declare global{
     namespace JSX{
         interface IntrinsicElements {
+            none: null,
             h1: BaseElement,
             h2: BaseElement,
             h3: BaseElement,
@@ -32,11 +33,12 @@ declare global{
             img:ImageElement,
             a: AnchorElement,
             button: BaseElement,
-            none: null
+            br: BaseElement,
         }
     }
 }
 export const elements: JSX.IntrinsicElements = {
+    none: null,
     h1: {},
     h2: {},
     h3: {},
@@ -47,5 +49,5 @@ export const elements: JSX.IntrinsicElements = {
     img: {src: "", alt: ""},
     a: {},
     button: {},
-    none: null
+    br: {}
 }
