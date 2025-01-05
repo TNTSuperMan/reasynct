@@ -1,7 +1,7 @@
-import { wind, type Component } from ".";
-import { createInitialHook, type State } from "./hooks";
+import { type Component } from ".";
+import { createHook, createInitialHook, type HookFunction, type State } from "./hooks";
 import { elements } from "./jsx-types";
-import { ObjEntries } from "./util";
+import { ObjEntries, wind } from "./util";
 
 const StateMap: Map<HTMLElement, State> = new Map();
 
@@ -32,6 +32,15 @@ export const h = <T extends object = object, K extends keyof JSX.IntrinsicElemen
     if(typeof tag == "string"){
         return jsxDOM(tag, props, ...children);
     }else{
-        return tag(createInitialHook(()=>0)[0], props)
+        let state: [HookFunction, State] | undefined;
+        const el = tag((state = createInitialHook(()=>{
+            if(state){
+                let e = tag(createHook(state[1]), props);
+                while(el.firstChild) el.firstChild.remove();
+                el.append(...Array.from(e.childNodes));
+            }
+        }))[0], props)
+
+        return el;
     }
 }

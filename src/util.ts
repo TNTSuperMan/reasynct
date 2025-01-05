@@ -1,3 +1,5 @@
+export const wind = window;
+
 export const ObjKeys = <O extends object>(target: O): (keyof O)[] => {
     const keys: any = Object.keys(target);
     return keys;
