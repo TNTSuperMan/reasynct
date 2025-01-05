@@ -31,6 +31,7 @@ declare global{
             p:  BaseElement,
             img:ImageElement,
             a: AnchorElement,
+            button: BaseElement,
             none: null
         }
     }
@@ -45,5 +46,6 @@ export const elements: JSX.IntrinsicElements = {
     p: {},
     img: {src: "", alt: ""},
     a: {},
+    button: {},
     none: null
 }
