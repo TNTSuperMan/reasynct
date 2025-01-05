@@ -35,7 +35,7 @@ export const h = <T extends object = object, K extends keyof JSX.IntrinsicElemen
         let state: [HookFunction, State] | undefined;
         const el = tag(props, (state = createInitialHook(()=>{
             if(state){
-                let e = tag(createHook(state[1]), props);
+                let e = tag(props, createHook(state[1]));
                 while(el.firstChild) el.firstChild.remove();
                 el.append(...Array.from(e.childNodes));
             }
