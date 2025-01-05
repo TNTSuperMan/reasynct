@@ -12,11 +12,11 @@ const jsxDOM = <K extends keyof JSX.IntrinsicElements>
     el.append(...children.flatMap(e=>typeof e == "string" ? new wind.Text(e) : e));
     if(!props) return el;
     
-    el.id = props.id ?? "";
+    if(props.id) el.id = props.id;
     if(Array.isArray(props.className))
         el.classList.add(...props.className)
-    else
-        el.className = props.className ?? "";
+    else if(props.className)
+        el.className = props.className;
     if(props.style)
         ObjEntries<typeof props.style, string | undefined>(props.style)
             .forEach(e=>{
