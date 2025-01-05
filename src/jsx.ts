@@ -33,13 +33,13 @@ export const h = <T extends object = object, K extends keyof JSX.IntrinsicElemen
         return jsxDOM(tag, props, ...children);
     }else{
         let state: [HookFunction, State] | undefined;
-        const el = tag((state = createInitialHook(()=>{
+        const el = tag(props, (state = createInitialHook(()=>{
             if(state){
                 let e = tag(createHook(state[1]), props);
                 while(el.firstChild) el.firstChild.remove();
                 el.append(...Array.from(e.childNodes));
             }
-        }))[0], props)
+        }))[0])
 
         return el;
     }
