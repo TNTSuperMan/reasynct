@@ -34,6 +34,7 @@ declare global{
             a: AnchorElement,
             button: BaseElement,
             br: BaseElement,
+            div: BaseElement
         }
     }
 }
@@ -49,5 +50,6 @@ export const elements: JSX.IntrinsicElements = {
     img: {src: "", alt: ""},
     a: {},
     button: {},
-    br: {}
+    br: {},
+    div: {}
 }
